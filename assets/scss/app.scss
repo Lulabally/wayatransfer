@@ -1,0 +1,381 @@
+@import url('https://fonts.googleapis.com/css2?family=Assistant&display=swap');
+
+// Font Variables
+$assistant: 'Assistant', sans-serif;   
+$primary: #0077FF;
+$dark: #000;
+
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+// Styles
+body {
+    font-family: $assistant;
+    font-weight: normal;
+    background-color: #01aa93;
+    font-size: 1em;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #3A3A3A;
+    background-image: url('images/background.png');
+    background-size: cover;
+}
+
+.main {
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+}
+
+.form-transfer {
+    width: 100%;
+    max-width: 350px;
+    margin: auto;
+    border-radius: 1em;
+    box-shadow: 3px 2px 10px rgba(0, 0, 0, 0.3);
+    position: relative;
+    padding-bottom: 2em;
+
+    form {
+        position: relative;
+        display: inline-block;
+    }
+}
+
+
+
+button {
+    background: #01aa93;
+    border: none;
+    color: #FFF;
+    font-size: 1.2em;
+    padding: 0.5em 1.2em;
+    border-radius: 1.5em;
+    cursor: pointer;
+    text-align: center;
+    margin-top: 1.2em;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+
+    &:disabled {
+        cursor: no-drop;
+        opacity: 0.8;
+    }
+    &:hover {
+        transform: translate3d(0px,-1px,0px);
+        box-shadow: 0 7px 14px rgba(50,50,93,.1), 0 3px 6px rgba(0,0,0,.08);
+    }
+
+    .spinner {
+        display: none;
+    }
+
+    &.uploading {
+        color: transparent;
+
+        .spinner {
+            display: inline-block;
+            border: 4px solid #97DDCF;
+            border-left-color: #e6edff;
+            border-radius: 50%;
+            width: 1.5em;
+            height: 1.5em;
+            animation: donut-spin 1.2s linear infinite;
+
+            position: absolute;
+
+            left: 50%;
+            margin-left: -0.75em;
+            margin-top: -0.15em;
+        }
+        
+        @keyframes donut-spin {
+            to {
+                transform: rotate(1turn);
+            }
+        }
+        
+    }
+}
+
+
+
+
+.file-input {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+.file-label {
+    cursor: pointer;
+    padding: 1em 0;
+}
+
+.label-text {
+    padding-top: 0.5em;
+
+    .label-title {
+        font-size: 1.4em;
+        padding-bottom: 0.2em;
+        display: block;
+    }
+    .label-description {
+        font-size: 0.8em;
+        color: #878787;
+        line-height: 1.35;
+        display: block;
+        > div {
+            position: relative;
+        }
+        .textHidden {
+            color: transparent;
+        }
+
+        .input-error-message {
+            text-align: center;
+            font-size: inherit;
+            display: inline-block;
+            width: 100%;
+            position: absolute;
+            top: 0;
+        }
+    }
+}
+
+.upload-icon {
+    text-indent: -9999999px;
+    background: center / 50% no-repeat url('images/up-arrow.svg');
+
+    &.uploaded {
+        background: center / 50% no-repeat url('images/check.svg');
+    }
+}
+
+// Error
+.input-error-message {
+    font-size: 0.8em;
+    color: #878787;
+    line-height: 1;
+    display: block;
+    text-align: left;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 10;
+}
+
+.form-transfer-group {
+    position: relative;
+    height: 0;
+    width: 100%;
+    padding-bottom: 100%;
+}
+
+.form-transfer-top {
+    background-color: #FFF;
+    position: relative;
+    border-radius: 1em 1em 5em 0;
+
+    &::after{
+        content: "";
+        background: #99E0D2;
+        position: absolute;
+        height: 5em;
+        width: 5em;
+        right: 0;
+        z-index: -1;
+        margin-top: -5em;
+    }
+}
+
+.form-transfer-bottom {
+    background-color: #99E0D2;
+    border-radius: 5em 0 1em 1em;
+
+    &::before{
+        content: '';
+        background: #FFF;
+        position: absolute;
+        height: 5em;
+        width: 5em;
+        left: 0;
+        z-index: -1;
+    }
+}
+
+.inner-form-group {
+    padding: 1.5em;
+}
+
+//// TEXT input
+.text-input-group {
+
+    padding-top: 1em;
+    
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    margin: 1.25em 1em 1em 1em;
+    max-width: 350px;
+    width: calc(100% - 2em);
+    vertical-align: top;
+    
+    .text-input {
+        position: relative;
+        display: inline-block;
+        width: 100%;
+        border-bottom: 2px solid rgba(0,0,0,0.2);
+    }
+    
+    .text-input-field {
+        padding: 0.5em 0em 0.25em;
+        width: 100%;
+        background: transparent;
+        color: #3A3A3A;
+        font-size: 1.2em;
+        font-family: $assistant;
+        
+        position: relative;
+        display: block;
+        float: right;
+        
+        border: none;
+        border-radius: 0;
+        
+        &::placeholder {
+            color: transparent;
+        }
+
+        &:focus {
+            outline: none;
+
+            &+ .text-input-label {
+                transform: translate3d(0, -1em, 0) scale3d(0.75, 0.75, 1);
+            }
+
+            &::after {
+                width: 100%;
+            }
+        }
+
+        &:not(:placeholder-shown) {
+            &+ .text-input-label {
+                transform: translate3d(0, -1em, 0) scale3d(0.75, 0.75, 1);
+            }
+        }
+    }
+    .text-input-label {
+        position: absolute;
+        top: 0;
+        font-size: 1.2em;
+        left: 0;
+        display: block;
+        width: 100%;
+        text-align: left;
+        padding: 0em;
+        pointer-events: none;
+
+        transform-origin: 0 0;
+        transition: transform 0.2s, color 1s;
+        transition-timing-function: ease, ease;
+        transition-timing-function: ease-out;
+        
+        float: right;
+        user-select: none;
+
+        .label-text {
+            position: relative;
+            display: block;
+            padding: 0.2em 0;
+            width: 100%;
+            color: rgba($color: #3A3A3A, $alpha: 0.6)
+        }
+    }
+
+}
+
+////////////////
+.progress-circle {
+    font-size: 1em;
+    position: relative;
+    padding: 0;
+    width: 5em;
+    height: 5em;
+    background-color: rgba($color: #01AA93, $alpha: 0.5);
+    border-radius: 50%;
+    line-height: 5em;
+    text-align: center;
+    display: inline-block;
+
+    &:after{
+        border: none;
+        position: absolute;
+        top: 0.2em;
+        left: 0.2em;
+        text-align: center;
+        display: block;
+        border-radius: 50%;
+        width: 4.6em;
+        height: 4.6em;
+        background-color: white;
+        content: " ";
+    }
+}
+ /* Text inside the control */
+ .progress-circle span {
+     position: absolute;
+     line-height: 5em;
+     width: 5em;
+     text-align: center;
+     display: block;
+     color: #53777A;
+     z-index: 2;
+ }
+ .left-half-clipper { 
+    /* a round circle */
+    border-radius: 50%;
+    width: 5em;
+    height: 5em;
+    position: absolute; /* needed for clipping */
+    clip: rect(0, 5em, 5em, 2.5em); /* clips the whole left half*/ 
+ }
+ /* when p>50, don't clip left half*/
+ .progress-circle.over50 .left-half-clipper {
+    clip: rect(auto,auto,auto,auto);
+ }
+ .value-bar {
+    /*This is an overlayed square, that is made round with the border radius,
+    then it is cut to display only the left half, then rotated clockwise
+    to escape the outer clipping path.*/ 
+    position: absolute; /*needed for clipping*/
+    clip: rect(0, 2.5em, 5em, 0);
+    width: 5em;
+    height: 5em;
+    border-radius: 50%;
+    border: 0.45em solid #53777A; /*The border is 0.35 but making it larger removes visual artifacts */
+    /*background-color: #4D642D;*/ /* for debug */
+    box-sizing: border-box;
+   
+ }
+ /* Progress bar filling the whole right half for values above 50% */
+ .progress-circle.over50 .first50-bar {
+    /*Progress bar for the first 50%, filling the whole right half*/
+    position: absolute; /*needed for clipping*/
+    clip: rect(0, 5em, 5em, 2.5em);
+    background-color: #53777A;
+    border-radius: 50%;
+    width: 5em;
+    height: 5em;
+ }
+ .progress-circle:not(.over50) .first50-bar{ display: none; }
+ 

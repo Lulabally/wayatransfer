@@ -1,0 +1,9 @@
+oneup_flysystem:
+    adapters:
+        transfer_adapter:
+            local:
+                directory: '%kernel.project_dir%/var/transfers'
+    filesystems:
+        transfer_filesystem:
+            adapter: transfer_adapter
+            alias: League\Flysystem\Filesystem

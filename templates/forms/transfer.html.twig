@@ -1,0 +1,10 @@
+<div>
+
+{{ form_start(form, {'attr': {'id': 'transfer-form', 'novalidate': 'true'}}) }}
+    {{ form_widget(form.file, {'attr': {'v-on:change': "handleFileUpload()"}}) }}
+    {{ form_widget(form.recipient, {'attr': {'v-model': 'recipient'}}) }}
+ 
+    <button type="submit" form="transfer-form" value="Submit">Envoyer</button>
+{{ form_end(form) }}
+</div>
+

@@ -1,0 +1,28 @@
+{# templates/emails/recipient.html.twig #}
+
+{% apply inline_css %}
+    <style>
+        @font-face {
+            font-family: 'Assistant';
+            font-style: normal;
+            font-weight: 400;
+            src: url(https://fonts.googleapis.com/css2?family=Assistant&display=swap) format('woff2');
+        }
+
+        body {
+            font-family: 'Assistance';
+            font-size: 16px;
+        }
+
+    </style>
+
+    <h1>Bonjour</h1>
+
+    <p>Vous trouverez en pièce jointe le fichier <b>{{ filename }}</b> qui vous a été envoyé via WayaTransfer.</br>
+    Nous vous en souhaitons bonne réception
+    </br>
+    </br>
+    Cordialement,</br>
+    L\'équipe de WayaTransfer</p>
+
+{% endapply %}
